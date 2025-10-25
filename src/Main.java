@@ -1,13 +1,35 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+import java.util.Arrays;
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+public class Main {
+    public static void main(String[] args) {
+
+        Integer[] arr = new Integer[] {1, 2, 3, 4, 5};
+
+        System.out.println(Arrays.toString(arr));
+
+        swapElements(arr,0,2);
+
+        System.out.println(Arrays.toString(arr));
+
+
+
+    }
+    public static <T> void swapElements(T[] array, int i, int j) {
+        if (array == null) {
+            throw new IllegalArgumentException("Массив не может быть null");
+        }
+        if (i < 0 || i >= array.length || j < 0 || j >= array.length) {
+            throw new IndexOutOfBoundsException("Индекс выходит за границы массива");
+        }
+
+        if (i == j) {
+            return;
+        }
+
+        T temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
 }
+
